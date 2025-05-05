@@ -1,14 +1,25 @@
 import React from 'react';
-import { Typography, Container } from '@mui/material';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
+import { lightTheme, darkTheme } from './theme';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
+import Header from './components/Header';
 
 const App = () => {
+  const { theme } = useTheme();
+
   return (
-    <Container sx={{ textAlign: 'center', mt: 5 }}>
-      <Typography variant="h4" component="h1" gutterBottom>
-        Loan Calculator
-      </Typography>
-    </Container>
+    <MuiThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <div>
+        <Header />
+      </div>
+    </MuiThemeProvider>
   );
 };
 
-export default App;
+const AppWrapper = () => (
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>
+);
+
+export default AppWrapper;
