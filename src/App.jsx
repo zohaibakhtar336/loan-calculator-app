@@ -8,7 +8,6 @@ import EMIForm from './components/EMIForm';
 
 const App = () => {
   const { theme } = useTheme();
-  const { currency } = useCurrency();
 
   return (
     <MuiThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
